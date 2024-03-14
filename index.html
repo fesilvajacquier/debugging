@@ -42,7 +42,7 @@
           <section>
             <img src="./images/dhh.jpg" alt="dhh" class="r-stretch">
             <p>
-              <a href="https://signalvnoise.com/posts/3375-the-five-programming-books-that-meant-most-to-me">Blog post</a>
+              <a href="https://signalvnoise.com/posts/3375-the-five-programming-books-that-meant-most-to-me" target="_blank">Blog post</a>
             </p>
           </section>
         </section>
@@ -104,7 +104,7 @@
           </section>
           <section>
               <p>¿Por qué el cliente necesita descargar un <code>CSV</code> con miles de recibos?</p>
-            <p><strong>Qué es lo que <em>desea</em> el cliente?</strong></p>
+            <p><strong>¿Qué es lo que <em>desea</em> el cliente?</strong></p>
           </section>
           <section>
             <img src="./images/invoices_paging_2.png" alt="invoices_paging">
@@ -122,14 +122,15 @@
           </section>
           <section>
             <pre><code data-trim data-line-numbers class="language-text"><script type="text/template">
+              >> hola.chau
               (irb):1:in `<main>': undefined local variable or method `hola' for main (NameError)
 
-              hola
+              hola.chau
               ^^^^
-              from internal:kernel:187:in `loop'
-              from /home/fesilvajacquier/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/irb-1.12.0/exe/irb:9:in `top (required)'
-              from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `load'
-              from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `main'
+                from <internal:kernel>:187:in `loop'
+                from /home/fesilvajacquier/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/irb-1.12.0/exe/irb:9:in `<top (required)>'
+                from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `load'
+                from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `<main>'
             </script></code></pre>
           </section>
           <section>
@@ -147,7 +148,7 @@
                 A la hora de buscar pistas hay que saber como hablarle a <em>Google</em>, a <em>Stack Overflow</em> o a <em>ChatGPT</em>. A ellos no les interesa, por ejemplo, el <em>hex</em> que está en el medio del error o el <em>path</em> completo del archivo en tu computadora.
               </li>
               <li>
-                Repetir el paso <em>1</em>. Con más atención. (<a href="https://news.ycombinator.com/item?id=18130605">HN ref</a>)
+                Repetir el paso <em>1</em>. Con más atención. (<a href="https://news.ycombinator.com/item?id=18130605" target="_blank">HN ref</a>)
               </li>
             </ol>
           </section>
@@ -191,7 +192,7 @@
           <section>
             <img src="./images/mermaid.png" alt="mermaid" class="r-stretch">
             <p>
-              Hecho con <a href="https://mermaid.js.org/">Mermaid</a>
+              Hecho con <a href="https://mermaid.js.org/" target="_blank">Mermaid</a>
             </p>
           </section>
         </section>
@@ -226,10 +227,10 @@
           </section>
           <section>
             <img src="./images/hilo.jpg" alt="hilo" class="r-stretch">
-            <p>Podemos armarnos del <a href="https://es.wikipedia.org/wiki/Laberinto_de_Creta">hilo de Ariadna</a></p>
+            <p>Podemos armarnos del <a href="https://es.wikipedia.org/wiki/Laberinto_de_Creta" target="_blank">hilo de Ariadna</a></p>
           </section>
           <section>
-            <h3><a href="https://en.wikipedia.org/wiki/Scientific_method#Process">Método científico</a></h3>
+            <h3><a href="https://en.wikipedia.org/wiki/Scientific_method#Process" target="_blank">Método científico</a></h3>
           </section>
           <section>
             <div style="text-align: left;  font-size: 1.5rem;">
@@ -278,11 +279,12 @@
                 COMPARISON_LOGGER = Logger.new(STDOUT)
                 COMPARISON_LOGGER.level = Logger::WARN
 
-                class Date
-                  [:<, :<=, :==, :>, :>=].each do |operator|
+                class Time
+                  [:<, :<=, :==, :>, :>=, :===].each do |operator|
                     define_method(operator) do |other|
-                      if other.is_a?(DateTime) || other.is_a?(Time)
-                        COMPARISON_LOGGER.warn "Comparison of Date with #{other.class} detected"
+                      if other.class.in?([ActiveSupport::TimeWithZone, Date, DateTime])
+
+                        COMPARISON_LOGGER.warn "Comparison of Time with #{other.class} detected"
                         caller_locations.each do |location|
                           if location.absolute_path&.include?(Rails.root.to_s)
                             COMPARISON_LOGGER.warn "#{location.absolute_path}:#{location.lineno}"
@@ -290,6 +292,20 @@
                         end
                       end
                       super(other)
+                    end
+                  end
+                  [:between?, :clamp?].each do |operator|
+                    define_method(operator) do |*args|
+                      if other = args.detect { |arg| arg.class.in?([ActiveSupport::TimeWithZone, Range, Date, DateTime]) }
+
+                        COMPARISON_LOGGER.warn "Comparison of DateTime with #{other.class} detected"
+                        caller_locations.each do |location|
+                          if location.absolute_path&.include?(Rails.root.to_s)
+                            COMPARISON_LOGGER.warn "#{location.absolute_path}:#{location.lineno}"
+                          end
+                        end
+                      end
+                      super(*args)
                     end
                   end
                 end
