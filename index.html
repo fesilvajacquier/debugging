@@ -19,13 +19,12 @@
 				<section>
           <h1>Debugging</h1>
           <h3>Solving the problem</h3>
-
+          <h3>Una charla no muy técnica</h3>
+          <br>
+          <br>
           <p>
             <strong>Fernando E. Silva Jacquier</strong>
           </p>
-          <p><small>
-            fesilvajacquier
-          </small></p>
         </section>
         <section>
           <section>
@@ -35,12 +34,16 @@
               </p>
               — John Johnson
             </blockquote>
+            <small>👀 ¿Qué problema?</small>
           </section>
           <section>
-            <img src="./images/are_your_lights_on.jpg" alt="book_image">
+            <img src="./images/are_your_lights_on.jpg" alt="book_image" class="r-stretch">
           </section>
           <section>
-            <img src="./images/dhh.jpg" alt="dhh">
+            <img src="./images/dhh.jpg" alt="dhh" class="r-stretch">
+            <p>
+              <a href="https://signalvnoise.com/posts/3375-the-five-programming-books-that-meant-most-to-me">Blog post</a>
+            </p>
           </section>
         </section>
         <section>
@@ -56,7 +59,7 @@
         <section>
           <section>
             <h2>What is <strong>the</strong> problem?</h2>
-            <h3>Definition</h3>
+            <h3><strong>La definición</strong></h3>
           </section>
           <section>
             <blockquote>
@@ -68,15 +71,15 @@
               Cómo es presentado el problema
             </h3>
             <p>
-              El cliente necesita descargar un <code>CSV</code> con miles de recibos. Pero por el tamaño del archivo, a veces el proceso falla.
+              El cliente necesita descargar un <code>CSV</code> con miles de recibos. Por el tamaño del archivo, a veces el proceso falla.
             </p>
             <p>
-              Así que hay que optimizar el proceso para que no falle.
+              <strong>Así que hay que optimizar el proceso para que no falle.</strong>
             </p>
           </section>
           <section>
             <h3>
-              Qué se puede hacer?
+              ¿Qué se puede hacer?
             </h3>
 
             <ul>
@@ -98,7 +101,9 @@
             <blockquote>
               > How could we change the problem statement to make the solution different?
             </blockquote>
-            <p><strong>Por qué el cliente necesita descargar un <code>CSV</code> con miles de recibos?</strong></p>
+          </section>
+          <section>
+              <p>¿Por qué el cliente necesita descargar un <code>CSV</code> con miles de recibos?</p>
             <p><strong>Qué es lo que <em>desea</em> el cliente?</strong></p>
           </section>
           <section>
@@ -113,11 +118,11 @@
         <section>
           <section>
             <h2>What is <strong>the</strong> problem?</h2>
-            <h3>Error messages</h3>
+            <h3><strong>Mensajes de error</strong></h3>
           </section>
           <section>
-            <pre><code data-noescape data-trim data-line-numbers>
-              (irb):1:in `main': undefined local variable or method `hola' for main (NameError)
+            <pre><code data-trim data-line-numbers class="language-text"><script type="text/template">
+              (irb):1:in `<main>': undefined local variable or method `hola' for main (NameError)
 
               hola
               ^^^^
@@ -125,7 +130,10 @@
               from /home/fesilvajacquier/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/irb-1.12.0/exe/irb:9:in `top (required)'
               from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `load'
               from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `main'
-            </code></pre>
+            </script></code></pre>
+          </section>
+          <section>
+            <img src="./images/modelo_de_comunicacion.jpg" alt="modelo_de_comunicacion" class="r-stretch">
           </section>
           <section>
             <ol>
@@ -147,15 +155,41 @@
         <section>
           <section>
             <h2>What is <strong>the</strong> problem?</h2>
-            <h3>Qué creemos que es cierto?</h3>
+            <h3><strong>¿Qué creemos que es cierto?</strong></h3>
           </section>
           <section>
+            <img src="./images/holmes_lestrade.jpg" alt="holmes_lestrade" class="r-stretch">
             <p>
-              Poner el checklist acá
+              <small>Sherlock y Lestrade</small>
             </p>
           </section>
           <section>
-            <img src="./images/mermaid.png" alt="mermaid">
+            <fieldset>
+              <legend>Creemos que:</legend>
+              <div style="display: flex; justify-content: start;">
+                <input type="checkbox" id="user_email" name="user_email" checked />
+                <label for="user_email">Todos los usuarios tienen un email</label>
+              </div>
+              <div style="display: flex; justify-content: start;">
+                <input type="checkbox" id="booking_validation" name="booking_validation" />
+                <label for="booking_validation">No se pueden hacer dos reservas para el mismo día</label>
+              </div>
+              <div style="display: flex; justify-content: start;">
+                <input type="checkbox" id="facturantes" name="facturantes" />
+                <label for="facturantes">La <code>API</code> de <em>Facturante</em> responde con ...</label>
+              </div>
+              <div style="display: flex; justify-content: start;">
+                <input type="checkbox" id="etc" name="etc" />
+                <label for="etc">...</label>
+              </div>
+            </fieldset>
+
+            <p>
+              Y cualquier cosa que pueda tener que ver con el <em>state</em>, los eventos, el <em>input</em>, el <em>execution flow</em>, etc.
+            </p>
+          </section>
+          <section>
+            <img src="./images/mermaid.png" alt="mermaid" class="r-stretch">
             <p>
               Hecho con <a href="https://mermaid.js.org/">Mermaid</a>
             </p>
@@ -167,39 +201,49 @@
           </section>
           <section>
             <blockquote>
-              Each solution is the source of the next problem
+              > Each solution is the source of the next problem
             </blockquote>
+          </section>
+          <section>
+            <img src="./images/invoices_paging_2.png" alt="invoices_paging">
           </section>
           <section>
             <blockquote>
-              If you can't think of at least three things that might be wrong with your understanding of the problem, you don't understand the problem.
+              > If you can't think of at least three things that might be wrong with your understanding of the problem, you don't understand the problem.
             </blockquote>
           </section>
           <section>
-            <img src="./images/rubber_duck.jpeg" alt="rubber_duck">
+            <div class="r-stack">
+              <img class="fragment" src="./images/rubber_duck.jpeg" alt="rubber_duck">
+              <img class="fragment" src="./images/lacan_freud.jpg" alt="lacan_freud">
+            </div>
           </section>
           <section>
             <blockquote>
-              As you wander along the weary path of problem definition, check back home once in a while to see if you haven't lost your way.
+              > As you wander along the weary path of problem definition, check back home once in a while to see if you haven't lost your way.
             </blockquote>
+            <small>👀 De la definición o de la resolución</small>
           </section>
           <section>
-            <img src="./images/hilo.jpg" alt="hilo">
+            <img src="./images/hilo.jpg" alt="hilo" class="r-stretch">
+            <p>Podemos armarnos del <a href="https://es.wikipedia.org/wiki/Laberinto_de_Creta">hilo de Ariadna</a></p>
           </section>
           <section>
             <h3><a href="https://en.wikipedia.org/wiki/Scientific_method#Process">Método científico</a></h3>
           </section>
           <section>
-            <h3>1</h3>
-            <p>Hipotesis: Pasa esto porque el usuario no tiene un email.</p>
-            <p>Referencias: Creemos que esto es cierto porque ...</p>
-            <p>Prueba de hipótesis: Verficar validación a nivel de modelo, verificar _null constraint_ en la base de datos, ...</p>
-            <p>Análisis y conclusiones: ...</p>
-            <h3>2</h3>
-            <p>Hipotesis: ...</p>
-            <p>Referencias: ...</p>
-            <p>Prueba de hipótesis: ...</p>
-            <p>Análisis y conclusiones: ...</p>
+            <div style="text-align: left;  font-size: 1.5rem;">
+              <h3>1</h3>
+              <p>Hipótesis: Pasa esto porque el usuario no tiene un email.</p>
+              <p>Referencias: Creemos que esto es cierto porque ...</p>
+              <p>Prueba de hipótesis: Verficar validación a nivel de modelo, verificar <em>null constraint</em> en la base de datos, ...</p>
+              <p>Análisis y conclusiones: ...</p>
+              <h3>2</h3>
+              <p>Hipotesis: ...</p>
+              <p>Referencias: ...</p>
+              <p>Prueba de hipótesis: ...</p>
+              <p>Análisis y conclusiones: ...</p>
+            </div>
           </section>
         </section>
 				<section>
@@ -212,16 +256,16 @@
             </blockquote>
           </section>
           <section>
-            Acá usar el problema del CSV
+            <p>Otro problemita con los <code>CSV</code></p>
           </section>
         </section>
 				<section>
           <section>
             <h2>Where does it come from?</h2>
-            <h3>Gain visibility</h3>
+            <h3><strong>Obtener claridad</strong></h3>
           </section>
           <section>
-              <img src="./images/tenderlove.jpeg" alt="tenderlove" height="300">
+              <img src="./images/tenderlove.jpeg" alt="tenderlove" height="300" class="r-stretch">
               <p>
                 <a href="https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html">I am a puts debuggerer</a>
               </p>
@@ -229,9 +273,8 @@
           <section>
             <p>Y a veces un <em>logger debuggerer</em></p>
             <pre>
-              <code data-noescape data-trim data-line-numbers>
+              <code data-trim data-line-numbers class="language-ruby">
                 # test_helper.rb
-                # Custom logger for comparison operations
                 COMPARISON_LOGGER = Logger.new(STDOUT)
                 COMPARISON_LOGGER.level = Logger::WARN
 
@@ -241,7 +284,6 @@
                       if other.is_a?(DateTime) || other.is_a?(Time)
                         COMPARISON_LOGGER.warn "Comparison of Date with #{other.class} detected"
                         caller_locations.each do |location|
-                          # Filter out traces from dependencies (gems)
                           if location.absolute_path&.include?(Rails.root.to_s)
                             COMPARISON_LOGGER.warn "#{location.absolute_path}:#{location.lineno}"
                           end
@@ -253,17 +295,69 @@
                 end
               </code>
             </pre>
+            <small>👀 Y un poco <em>monkey patcher</em></small>
           </section>
           <section>
+            <p>Listar todos los métodos</p>
             <pre>
-              <code data-noescape data-trim>
+              <code data-trim class="language-ruby">
+                42.methods
+                # [:to_fs, :to_formatted_s, :to_json, :magnitude, :abs, :floor, :ceil, :round, :truncate, :**, :<=>, :<<, :>>, :<=, :allbits?, :anybits?, :nobits?, :downto, :pred, :next, :pow, :[], :===, :digits, :>=, :==, :-@, :ordinal, :zero?, :upto, :integer?, :%, :&, :years, :numerator, :denominator, :chr, :+, :gcd, :-, :inspect, :/, :*, :gcdlcm, :months, :lcm, :rationalize, :size, :<, :succ, :>, :to_int, :ordinalize, :year, :ord, :to_s, :to_i, :to_f, :to_r, :to_d, :month, :bit_length, :even?, :odd?, :ceildiv, :div, :divmod, :fdiv, :^, :to_bn, :times, :multiple_of?, :coerce, :|, :modulo, :remainder, :~, :nonzero?, :+@, :dup, :negative?, :megabytes, :step, :positive?, :weeks, :megabyte, :kilobytes, :kilobyte, :terabytes, :second, :gigabytes, :gigabyte, :exabytes, :seconds, :petabytes, :petabyte, :eql?, :byte, :terabyte, :zettabyte, :infinite?, :finite?, :pretty_print_cycle, :exabyte, :days, :as_json, :arg, :real?, :rectangular, :singleton_method_added, :rect, :real, :imaginary, :polar, :abs2, :angle, :phase, :conjugate, :conj, :to_c, :to_money, :imag, :blank?, :fortnights, :fortnight, :in_milliseconds, :zettabytes, :week, :hour, :bytes, :day, :minute, :quo, :hours, :minutes, :pretty_print, :html_safe?, :clone, :i, :between?, :clamp, :require_dependency, :to_yaml, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods, :instance_variable_names, :present?, :with_options, :instance_values, :in?, :presence_in, :presence, :deep_dup, :acts_like?, :duplicable?, :to_param, :to_query, :bullet_key, :bullet_primary_key_value, :pretty_print_instance_variables, :pretty_print_inspect, :try, :try!, :singleton_class, :itself, :instance_variables, :instance_variable_get, :instance_variable_set, :instance_variable_defined?, :remove_instance_variable, :instance_of?, :kind_of?, :is_a?, :gem, :display, :awesome_inspect, :amazing_print, :public_send, :ai, :class_eval, :extend, :pretty_inspect, :!~, :class, :frozen?, :tap, :then, :yield_self, :nil?, :respond_to?, :method, :public_method, :singleton_method, :define_singleton_method, :hash, :freeze, :object_id, :send, :byebug, :remote_byebug, :debugger, :to_enum, :enum_for, :equal?, :!, :__send__, :!=, :instance_eval, :instance_exec, :__id__]
+              </code>
+            </pre>
+            <p>Epa! Son muchos</p>
+          </section>
+          <section>
+            <p>Listar algunos métodos </p>
+            <pre>
+              <code data-trim class="language-ruby">
+                42.methods.grep(/day/)
+                # [:days, :day]
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>¿De dónde viene?</p>
+            <pre>
+              <code data-trim class="language-ruby">
+                42.method(:days).source_location
+                # [
+                #   "/home/fesilvajacquier/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/activesupport-7.1.3/lib/active_support/core_ext/numeric/time.rb",
+                #   37
+                # ]
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>¿Cómo funciona la caja negra?</p>
+            <pre>
+              <code data-trim>
                 bundle open docusign_esign
+              </code>
+            </pre>
+            <pre>
+              <code data-trim  class="language-ruby">
+              # gem api client
+              unless response.success?
+                if response.timed_out?
+                  fail ApiError.new('Connection timed out')
+                elsif response.code == 0
+                  fail ApiError.new(:code => 0,
+                                    :message => response.return_message)
+                else
+                  fail ApiError.new(:code => response.code,
+                                    :response_headers => response.headers,
+                                    :response_body => response.body),
+                       response.status_message
+                end
+              end
               </code>
             </pre>
           </section>
         </section>
         <section>
-
+          <h1>Muchas gracias</h1>
+          <p><small>Me encuentran por ahí como <code>fesilvajacquier</code></small></p>
         </section>
 			</div>
 		</div>
