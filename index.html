@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Debugging - Solving the problem</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/dracula.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h1>Debugging</h1>
+          <h3>Solving the problem</h3>
+
+          <p>
+            <strong>Fernando E. Silva Jacquier</strong>
+          </p>
+          <p><small>
+            fesilvajacquier
+          </small></p>
+        </section>
+        <section>
+          <section>
+            <blockquote>
+              <p>
+                > First, solve the problem. Then, write the code.
+              </p>
+              — John Johnson
+            </blockquote>
+          </section>
+          <section>
+            <img src="./images/are_your_lights_on.jpg" alt="book_image">
+          </section>
+          <section>
+            <img src="./images/dhh.jpg" alt="dhh">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What is <strong>a</strong> problem?</h2>
+          </section>
+          <section>
+            <blockquote>
+              > A problem is a difference between things as desired and things as perceived.
+            </blockquote>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What is <strong>the</strong> problem?</h2>
+            <h3>Definition</h3>
+          </section>
+          <section>
+            <blockquote>
+              > Don't take the solution proposed by someone for the problem definition
+            </blockquote>
+          </section>
+          <section>
+            <h3>
+              Cómo es presentado el problema
+            </h3>
+            <p>
+              El cliente necesita descargar un <code>CSV</code> con miles de recibos. Pero por el tamaño del archivo, a veces el proceso falla.
+            </p>
+            <p>
+              Así que hay que optimizar el proceso para que no falle.
+            </p>
+          </section>
+          <section>
+            <h3>
+              Qué se puede hacer?
+            </h3>
+
+            <ul>
+              <li>
+                Reducir el tamaño del archivo
+              </li>
+              <li>
+                <em>Streamear</em> del archivo
+              </li>
+              <li>
+                Moverlo al <em>background</em> y notificar al cliente cuando esté listo
+              </li>
+              <li>
+                ... o podemos redifinir el problema
+              </li>
+            </ul>
+          </section>
+          <section>
+            <blockquote>
+              > How could we change the problem statement to make the solution different?
+            </blockquote>
+            <p><strong>Por qué el cliente necesita descargar un <code>CSV</code> con miles de recibos?</strong></p>
+            <p><strong>Qué es lo que <em>desea</em> el cliente?</strong></p>
+          </section>
+          <section>
+            <img src="./images/invoices_paging_2.png" alt="invoices_paging">
+          </section>
+          <section>
+            <blockquote>
+              > You can never be sure you have a correct definition, but don't ever stop trying to get one.
+            </blockquote>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What is <strong>the</strong> problem?</h2>
+            <h3>Error messages</h3>
+          </section>
+          <section>
+            <pre><code data-noescape data-trim data-line-numbers>
+              (irb):1:in `main': undefined local variable or method `hola' for main (NameError)
+
+              hola
+              ^^^^
+              from internal:kernel:187:in `loop'
+              from /home/fesilvajacquier/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/irb-1.12.0/exe/irb:9:in `top (required)'
+              from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `load'
+              from /home/fesilvajacquier/.rbenv/versions/3.3.0/bin/irb:25:in `main'
+            </code></pre>
+          </section>
+          <section>
+            <ol>
+              <li>
+                El primer paso es, por supuesto, leer el mensaje de error. Pero con mucha atención.
+              </li>
+              <li>
+                De ahí hay que extraer las partes relevantes.
+              </li>
+              <li>
+                A la hora de buscar pistas hay que saber como hablarle a <em>Google</em>, a <em>Stack Overflow</em> o a <em>ChatGPT</em>. A ellos no les interesa, por ejemplo, el <em>hex</em> que está en el medio del error o el <em>path</em> completo del archivo en tu computadora.
+              </li>
+              <li>
+                Repetir el paso <em>1</em>. Con más atención. (<a href="https://news.ycombinator.com/item?id=18130605">HN ref</a>)
+              </li>
+            </ol>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What is <strong>the</strong> problem?</h2>
+            <h3>Qué creemos que es cierto?</h3>
+          </section>
+          <section>
+            <p>
+              Poner el checklist acá
+            </p>
+          </section>
+          <section>
+            <img src="./images/mermaid.png" alt="mermaid">
+            <p>
+              Hecho con <a href="https://mermaid.js.org/">Mermaid</a>
+            </p>
+          </section>
+        </section>
+				<section>
+          <section>
+            <h2>What is the problem, <em>really</em>?</h2>
+          </section>
+          <section>
+            <blockquote>
+              Each solution is the source of the next problem
+            </blockquote>
+          </section>
+          <section>
+            <blockquote>
+              If you can't think of at least three things that might be wrong with your understanding of the problem, you don't understand the problem.
+            </blockquote>
+          </section>
+          <section>
+            <img src="./images/rubber_duck.jpeg" alt="rubber_duck">
+          </section>
+          <section>
+            <blockquote>
+              As you wander along the weary path of problem definition, check back home once in a while to see if you haven't lost your way.
+            </blockquote>
+          </section>
+          <section>
+            <img src="./images/hilo.jpg" alt="hilo">
+          </section>
+          <section>
+            <h3><a href="https://en.wikipedia.org/wiki/Scientific_method#Process">Método científico</a></h3>
+          </section>
+          <section>
+            <h3>1</h3>
+            <p>Hipotesis: Pasa esto porque el usuario no tiene un email.</p>
+            <p>Referencias: Creemos que esto es cierto porque ...</p>
+            <p>Prueba de hipótesis: Verficar validación a nivel de modelo, verificar _null constraint_ en la base de datos, ...</p>
+            <p>Análisis y conclusiones: ...</p>
+            <h3>2</h3>
+            <p>Hipotesis: ...</p>
+            <p>Referencias: ...</p>
+            <p>Prueba de hipótesis: ...</p>
+            <p>Análisis y conclusiones: ...</p>
+          </section>
+        </section>
+				<section>
+          <section>
+            <h2>Whose problem is it?</h2>
+          </section>
+          <section>
+            <blockquote>
+              > If people really have their lights on, a little reminder may be more effective than your complicated solution.
+            </blockquote>
+          </section>
+          <section>
+            Acá usar el problema del CSV
+          </section>
+        </section>
+				<section>
+          <section>
+            <h2>Where does it come from?</h2>
+            <h3>Gain visibility</h3>
+          </section>
+          <section>
+              <img src="./images/tenderlove.jpeg" alt="tenderlove" height="300">
+              <p>
+                <a href="https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html">I am a puts debuggerer</a>
+              </p>
+          </section>
+          <section>
+            <p>Y a veces un <em>logger debuggerer</em></p>
+            <pre>
+              <code data-noescape data-trim data-line-numbers>
+                # test_helper.rb
+                # Custom logger for comparison operations
+                COMPARISON_LOGGER = Logger.new(STDOUT)
+                COMPARISON_LOGGER.level = Logger::WARN
+
+                class Date
+                  [:<, :<=, :==, :>, :>=].each do |operator|
+                    define_method(operator) do |other|
+                      if other.is_a?(DateTime) || other.is_a?(Time)
+                        COMPARISON_LOGGER.warn "Comparison of Date with #{other.class} detected"
+                        caller_locations.each do |location|
+                          # Filter out traces from dependencies (gems)
+                          if location.absolute_path&.include?(Rails.root.to_s)
+                            COMPARISON_LOGGER.warn "#{location.absolute_path}:#{location.lineno}"
+                          end
+                        end
+                      end
+                      super(other)
+                    end
+                  end
+                end
+              </code>
+            </pre>
+          </section>
+          <section>
+            <pre>
+              <code data-noescape data-trim>
+                bundle open docusign_esign
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
